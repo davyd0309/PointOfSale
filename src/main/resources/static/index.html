@@ -10,41 +10,109 @@
             display: none !important;
         }
     </style>
+
+
 </head>
-<body ng-app='pos'>
+<body ng-app="mainModule" ng-controller="posController">
 <br>
-<div id='title' class="panel-title">
-    POINT OF SALE</div>
+
+<div id='title' class="panel-title" style="text-align: left;margin-left: 20px">
+    POINT OF SALE
+</div>
 
 
 <div class="container-fluid">
-    <div class="row content">
-        <div class="col-sm-3 sidenav">
+
+
+        <div style="float: left" class="col-sm-3 sidenav" >
             <h4>Menu</h4>
             <ul class="nav nav-pills nav-stacked">
-                <li class="active"><a href="#section1">Home</a></li>
+
+                <li class="list-group-item">
+                    Scanner
+                    <div class="material-switch pull-right">
+                        <input id="inScanner" name="someSwitchOption001" type="checkbox"/>
+                        <label for="inScanner" class="label-default"></label>
+                    </div>
+                </li>
+
+                <li class="list-group-item">
+                    Monitor LCD
+                    <div class="material-switch pull-right">
+                        <input id="inMonitor" name="someSwitchOption002" type="checkbox"/>
+                        <label for="inMonitor" class="label-default"></label>
+                    </div>
+                </li>
+
+                <li class="list-group-item">
+                    Printer
+                    <div class="material-switch pull-right">
+                        <input id="inPrinter" name="someSwitchOption003" type="checkbox"/>
+                        <label for="inPrinter" class="label-default"></label>
+                    </div>
+                </li>
+
 
             </ul>
-            <br>
+            <br><br><br><br><br>
+
+            <h4>Dostępne produkty</h4>
+            <table class="table" border="1" cellpadding="10">
+                <thead>
+                <tr>
+                    <th>Barcode</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="product in allProducts">
+                    <td>{{product.barcode}}</td>
+                    <td>{{product.name}}</td>
+                    <td>{{product.price}}</td>
+                </tr>
+                </tbody>
+            </table>
+
+
+            </span>
+
         </div>
 
-        <div class="col-sm-9">
-            BODY
+        <div style="float: left; text-align: center"  class="col-sm-9" >
+
+            <br>
+            <input id="inBarcode" type="text" style="width: 20%;" >
+            <button id="btScanBarcode" type="button" class="btn btn-primary" ng-click="scanBarcode()">Scan barcode
+            </button>
+            {{monitor}}
+            <br>
+            <img src="empty-cart.png">
+
+            <h3 style="color: red">{{shoppingCartSum}}</h3>
+            <br>
+            <br>
+            <br>
+            <button id="btExit" type="button" class="btn btn-primary" ng-click="printShoppingCart()">Exit
+            </button>
         </div>
-    </div>
+
+
 </div>
 
-<footer id="footer" class="container-fluid">
+<footer id="footer" class="container-fluid" style="text-align: left;margin-left: 20px">
     <br>
 
-        <p>POINT OF SALE --- KUPUJ Z GŁOWĄ !</p>
+    <p>POINT OF SALE --- KUPUJ Z GŁOWĄ !</p>
 
-        <p>Copyright © 2017 Konrad Dawydiuk All
-            Rights Reserved</p>
+    <p>Copyright © 2017 Konrad Dawydiuk All
+        Rights Reserved</p>
 </footer>
 
+
 <script src="js/angular-bootstrap.js" type="text/javascript"></script>
-<script src="js/pos.js"></script>
+<script src="js/app.js"></script>
+<script src="js/posController.js"></script>
 
 </body>
 </html>

@@ -1,8 +1,6 @@
 package pl.dawydiuk.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.dawydiuk.dao.ProductDao;
 import pl.dawydiuk.dto.ProductDto;
 import pl.dawydiuk.model.Product;
 
@@ -20,4 +18,9 @@ public interface ProductService {
 
     ProductDto findProductByBarcode(String barcode);
 
+    void addProductToShoppingCart(ProductDto productDto);
+
+    List<ProductDto> getAddedProducts();
+
+    void clearAllScannedProduct();
 }
